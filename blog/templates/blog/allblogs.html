@@ -1,13 +1,13 @@
 <!doctype html>
-{% load staticfiles%}
 <html lang="en">
+  {% load staticfiles%}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Ishan Mishra</title>
+    <title>Ishan's Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
@@ -45,67 +45,52 @@
   </head>
   <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="{% url 'homepage'%}">Ishan Mishra</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
-                  <a class="nav-link" href="http://Twitter.com/ishan2198">Twitter</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{%static 'resume.pdf'%}">Resume</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{%url 'allblogs'%}">Blog</a>
-                </li>
-                <li class="nav-item">
-                  
-                </li>
-              </ul>
-            </div>
-          </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="{% url 'homepage'%}">Ishan Mishra</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item ">
+                <a class="nav-link" href="http://Twitter.com/ishan2198">Twitter</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%static 'resume.pdf'%}">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{%url 'allblogs'%}">Blog</a>
+              </li>
+              <li class="nav-item">
+                
+              </li>
+            </ul>
+          </div>
+        </nav>
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
     <div class="container">
-      <h1>Hi Iam Ishan..</h1>
-      <p class="lead text-muted">I am a student at IIIT kalyani this website is all about my project and tutorials to help others</p>
-      <p>
-        <a href="mailto:ishan2198@hotmail.com" class="btn btn-primary my-2">Email Me</a>
-        
-      </p>
-      <img src = '{% static "photo.jpg"%}' height="200"></img>
-    </div>
-  </section>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-     
-      <div class="row">
-          {%for project in projects.all%}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src = "{{project.image.url}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ></img>
-            <div class="card-body">
-              <p class="card-text">{{project.summary}}</p>
-              
-                
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        
-        
-        
-      </div>
+  <h1 class = 'text-center pt-3'>Welcome to Ishan's Blog</h1>
+  <br/>
+  <br/>
+  <h2>Latest Posts</h2>
+  
+  <hr/>
+  {%for blog in blogs.all%}
+    <a href = " {%url 'detail' blog.id%}"><h3>{{blog.title}}</h3></a>
+    {{blog.pub_date_pretty}}
+    <br/>
+    <img class = "img-fluid" src = "{{blog.image.url}}" height="200" width="200"> </img>
+    <br/>
+    <p>{{blog.summary}}</p>
+      {%endfor%}
+      
     </div>
-  </div>
+        
+      
+
 
 </main>
 
