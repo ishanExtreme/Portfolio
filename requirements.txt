@@ -51,4 +51,3 @@ whitenoise==5.0.1
 widgetsnbextension==3.5.1
 wincertstore==0.2
 zipp==0.6.0
-psycopg2==2.7.2
